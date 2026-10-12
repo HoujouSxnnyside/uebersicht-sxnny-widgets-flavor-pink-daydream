@@ -4,7 +4,7 @@
 
 ![Version](https://img.shields.io/badge/version-0.1.0-blue)
 ![License](https://img.shields.io/badge/License-SPUL-yellow)
-![CI](https://github.com/HoujouSxnnyside/macos-widgets/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/HoujouSxnnyside/uebersicht-sxnny-widgets-flavor-pink-daydream/actions/workflows/ci.yml/badge.svg)
 
 <p align="center">
   <strong>Pastel Stationery Suite ✦ Tactile Scrapbook Desktop ✦ Ergonomic macOS Sanctuary</strong><br>
@@ -56,7 +56,7 @@ Personal project by HoujouSxnnyside. Part of the [Sxnnyside Project](https://sxn
 
 No terminal, compiler, or developer tooling required:
 
-1. **Download**: Get the latest release archive [`sxnny-pink-daydream.zip`](https://github.com/HoujouSxnnyside/macos-widgets/releases/latest/download/sxnny-pink-daydream.zip).
+1. **Download**: Get the latest release archive [`sxnny-pink-daydream.zip`](https://github.com/HoujouSxnnyside/uebersicht-sxnny-widgets-flavor-pink-daydream/releases/latest/download/sxnny-pink-daydream.zip).
 2. **Extract**: Double-click the `.zip` archive to extract the `sxnny-pink-daydream/` folder.
 3. **Open Widgets Folder**: Click the **Übersicht** icon in your macOS menu bar and choose **Open Widgets Folder** (or navigate to `~/Library/Application Support/Übersicht/widgets/`).
 4. **Place**: Drop the extracted `sxnny-pink-daydream/` folder into your Widgets directory.
@@ -67,8 +67,8 @@ No terminal, compiler, or developer tooling required:
 For local development or customization (requires [Bun](https://bun.sh) `>= 1.1.0`, [Swift](https://swift.org) `>= 6.0`, and [Just](https://github.com/casey/just)):
 
 ```bash
-git clone https://github.com/HoujouSxnnyside/macos-widgets.git
-cd macos-widgets
+git clone https://github.com/HoujouSxnnyside/uebersicht-sxnny-widgets-flavor-pink-daydream.git
+cd uebersicht-sxnny-widgets-flavor-pink-daydream
 
 just install
 just build
@@ -98,7 +98,7 @@ just package
 ## Architecture
 
 ```
-macos-widgets/
+uebersicht-sxnny-widgets-flavor-pink-daydream/
 ├── src/
 │   ├── widgets/              # Six stationery desktop widgets (React + Emotion)
 │   │   ├── sweet-time/       # Confectionery digital clock and date

@@ -3,14 +3,14 @@
 ## Getting Help
 
 **GitHub Issues**
-For bugs or unexpected behavior, open an [issue](https://github.com/HoujouSxnnyside/macos-widgets/issues). Use the bug report template and include enough context to reproduce the problem.
+For bugs or unexpected behavior, open an [issue](https://github.com/HoujouSxnnyside/uebersicht-sxnny-widgets-flavor-pink-daydream/issues). Use the bug report template and include enough context to reproduce the problem.
 
 ---
 
 ## Before Asking
 
 - Check the [README](README.md) — installation and usage are documented there.
-- Search existing [issues](https://github.com/HoujouSxnnyside/macos-widgets/issues) before opening a new one.
+- Search existing [issues](https://github.com/HoujouSxnnyside/uebersicht-sxnny-widgets-flavor-pink-daydream/issues) before opening a new one.
 
 ---
 

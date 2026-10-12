@@ -4,7 +4,7 @@
   "description": "Artisanal pastel stationery suite of desktop widgets for macOS running on Übersicht",
   "license": "LicenseRef-SPUL",
   "author": "HoujouSxnnyside",
-  "repository": "https://github.com/HoujouSxnnyside/macos-widgets",
+  "repository": "https://github.com/HoujouSxnnyside/uebersicht-sxnny-widgets-flavor-pink-daydream",
   "packageManager": "bun@1.4.2",
   "private": true,
   "type": "module",

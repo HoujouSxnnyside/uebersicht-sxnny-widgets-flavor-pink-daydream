@@ -3,7 +3,7 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "macos-widgets",
+      "name": "sxnny-pink-daydream",
       "dependencies": {
         "@emotion/css": "^11.13.5",
         "@emotion/react": "^11.14.0",

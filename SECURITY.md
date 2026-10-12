@@ -8,7 +8,7 @@ If you find a security vulnerability in **Sxnny Pink Daydream**, report it priva
 Email — `legal.sxnnyside@sxnnysideproject.com`
 
 **Alternative:**
-[GitHub Private Security Advisory](https://github.com/HoujouSxnnyside/macos-widgets/security/advisories/new)
+[GitHub Private Security Advisory](https://github.com/HoujouSxnnyside/uebersicht-sxnny-widgets-flavor-pink-daydream/security/advisories/new)
 
 ---
 
@@ -40,7 +40,7 @@ This is a solo-maintained project. That window reflects reality, not indifferenc
 
 ## Scope
 
-This policy covers the **macos-widgets** repository only.
+This policy covers the **uebersicht-sxnny-widgets-flavor-pink-daydream** repository only.
 For ecosystem-wide security concerns, use the email above.
 
 ---
