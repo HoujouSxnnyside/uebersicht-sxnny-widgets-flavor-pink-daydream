@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+bun.lockb
+
+# Build outputs
+dist/
+out/
+build/
+bin/
+
+# Swift / Xcode build artifacts
+.build/
+*.xcodeproj
+*.xcworkspace
+.swiftpm/
+
+# macOS system files
+.DS_Store
+*.swp
+*.swo
+
+# Environment / local
+.env
+.env.local
+
+# Animoria cache & staged cleanup
+.animoria/

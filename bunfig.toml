@@ -1,0 +1,13 @@
+# bunfig.toml — Bun configuration for Übersicht Sxnny Widgets
+# Standardized per Sxnnyside Project TypeScript/Bun Profile
+
+[install]
+# Pin exact dependency versions on install
+exact = true
+# Enable frozen lockfile in continuous integration
+frozenLockfile = false
+
+[test]
+# Test runner configuration
+root = "."
+coverage = false

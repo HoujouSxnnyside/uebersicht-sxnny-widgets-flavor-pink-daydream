@@ -1,0 +1,45 @@
+{
+  "name": "sxnny-pink-daydream",
+  "version": "0.1.0",
+  "description": "Artisanal pastel stationery suite of desktop widgets for macOS running on Übersicht",
+  "license": "LicenseRef-SPUL",
+  "author": "HoujouSxnnyside",
+  "repository": "https://github.com/HoujouSxnnyside/macos-widgets",
+  "packageManager": "bun@1.4.2",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "bun run scripts/build.ts --watch",
+    "build": "bun run build:swift && bun run build:widgets",
+    "build:widgets": "bun run scripts/build.ts",
+    "build:swift": "swift build -c release --package-path native",
+    "typecheck": "tsc --noEmit",
+    "lint": "biome check .",
+    "format": "biome format --write .",
+    "format:check": "biome format .",
+    "test": "bun test",
+    "check": "bun run lint && bun run format:check && bun run typecheck && bun run test",
+    "clean": "rm -rf dist bin .build native/.build",
+    "prepare": "husky",
+    "install:link": "bun run scripts/link-ubersicht.ts",
+    "optimize:assets": "bun run scripts/optimize-assets.ts"
+  },
+  "dependencies": {
+    "@emotion/css": "^11.13.5",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.15",
+    "@iconify-json/mingcute": "^1.2.8",
+    "@types/bun": "1.4.2",
+    "@types/react": "18.2.0",
+    "@types/react-dom": "18.2.0",
+    "@types/sharp": "0.32.0",
+    "husky": "9.1.7",
+    "sharp": "0.35.5",
+    "typescript": "7.0.2"
+  }
+}
