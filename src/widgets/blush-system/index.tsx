@@ -9,19 +9,18 @@ import { ensurePinkDaydreamFonts } from '@/shared/styles/global';
 import { theme } from '@/shared/styles/theme';
 import type { UbersichtRenderProps } from '@/shared/types/ubersicht';
 
-// Ensure Pink Daydream embedded fonts
 ensurePinkDaydreamFonts();
 
 /**
- * 06 — Blush System
- * macOS system monitor presented as delicate coquette jewels:
- * CPU (illuminating pearls), RAM (rose petal bar),
- * Battery (heart gem), and Storage (amethyst lilac track).
+ * Blush System: a system monitor drawn as jewelry. CPU load lights up pearls, memory fills a
+ * rose petal bar, the battery is a heart gem, and storage is a lilac track.
  */
-
+/** Runs the native tool that prints the system metrics as JSON. */
 export const command = './sxnny-pink-daydream/bin/system-cli 2>/dev/null || ./bin/system-cli';
-export const refreshFrequency = 3000; // Refresh every 3 seconds
+/** Refresh interval in milliseconds (3 seconds). */
+export const refreshFrequency = 3000;
 
+/** Places the widget in the bottom right corner, inside the safe area. */
 export const className = `
   bottom: ${theme.safeArea.bottom};
   right: ${theme.safeArea.right};
@@ -196,6 +195,7 @@ const heartGemStyle = (isCharging: boolean, level: number) => css`
   animation: ${isCharging ? css`${pulseChargeAnim} 1.8s ease-in-out infinite` : 'none'};
 `;
 
+/** System metrics reported by `system-cli`. */
 interface SystemData {
   cpuPercent: number;
   memoryPercent: number;
@@ -210,6 +210,7 @@ interface SystemData {
   isPluggedIn: boolean;
 }
 
+/** Sample metrics shown until real data arrives. */
 const fallbackData: SystemData = {
   cpuPercent: 8,
   memoryPercent: 62,
@@ -224,6 +225,12 @@ const fallbackData: SystemData = {
   isPluggedIn: true,
 };
 
+/**
+ * Parses the output of `system-cli`, filling missing fields with the sample metrics.
+ *
+ * @param output - The raw JSON printed by the tool.
+ * @returns The metrics, or the sample metrics when the output is missing or invalid.
+ */
 function parseSystemOutput(output?: string): SystemData {
   if (!output) return fallbackData;
   try {
@@ -246,6 +253,11 @@ function parseSystemOutput(output?: string): SystemData {
   }
 }
 
+/**
+ * Renders the Blush System card.
+ *
+ * @param props - The command output from Übersicht.
+ */
 export const render = ({ output }: UbersichtRenderProps) => {
   const i18n = getI18n();
   const data = parseSystemOutput(output);

@@ -1,14 +1,21 @@
 import type { FC, SVGProps } from 'react';
 
+/** Props for {@link BowSticker}. Any other SVG attribute is forwarded to the root element. */
 interface BowStickerProps extends SVGProps<SVGSVGElement> {
+  /** Width and height in pixels. */
   size?: number;
+  /** Fill color of the bow knot and loops. */
   color?: string;
+  /** Fill color of the ribbon tails. */
   ribbonColor?: string;
+  /** Color of the soft inner shadow. */
   shadowColor?: string;
 }
 
 /**
- * Coquette pink bow / ribbon sticker for scrapbook-styled widgets
+ * Coquette bow sticker for scrapbook-style widgets.
+ *
+ * Decorative only: the SVG is hidden from assistive technology.
  */
 export const BowSticker: FC<BowStickerProps> = ({
   size = 48,

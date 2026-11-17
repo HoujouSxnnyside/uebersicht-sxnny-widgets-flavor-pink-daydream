@@ -1,7 +1,14 @@
 /**
- * Internationalization (i18n) module based on macOS system configuration
+ * Translations and locale helpers for the widgets.
+ *
+ * @packageDocumentation
  */
 
+/**
+ * Returns the preferred locale of the system.
+ *
+ * @returns The first language reported by the browser, or `en-US` when none is available.
+ */
 export function getSystemLocale(): string {
   if (typeof navigator !== 'undefined') {
     const first = navigator.languages?.[0];
@@ -15,11 +22,17 @@ export function getSystemLocale(): string {
   return 'en-US';
 }
 
+/**
+ * Tells whether the system locale is Spanish.
+ *
+ * @returns `true` when the system locale starts with `es`.
+ */
 export function isSpanishLocale(): boolean {
   const loc = getSystemLocale().toLowerCase();
   return loc.startsWith('es');
 }
 
+/** Text shown by the widgets, grouped by area. */
 export interface Translations {
   common: {
     garden: string;
@@ -65,6 +78,7 @@ export interface Translations {
   };
 }
 
+/** All translation packages, keyed by language code. */
 export const translations: Record<'es' | 'en', Translations> = {
   en: {
     common: {
@@ -199,14 +213,20 @@ export const translations: Record<'es' | 'en', Translations> = {
 };
 
 /**
- * Returns the active translation package adhering strictly to the Sxnnyside English standard
+ * Returns the active translation package.
+ *
+ * @returns The English translations. All user-facing text is English.
  */
 export function getI18n(): Translations {
   return translations.en;
 }
 
 /**
- * Formats a date using canonical English locale adhering to Sxnnyside standard
+ * Formats a date in the `en-US` locale.
+ *
+ * @param date - The date to format.
+ * @param options - Formatting options passed to `Intl.DateTimeFormat`.
+ * @returns The formatted date.
  */
 export function formatSystemDate(date: Date, options: Intl.DateTimeFormatOptions): string {
   return new Intl.DateTimeFormat('en-US', options).format(date);

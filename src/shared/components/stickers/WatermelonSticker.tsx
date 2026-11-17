@@ -1,11 +1,15 @@
 import type { FC, SVGProps } from 'react';
 
+/** Props for {@link WatermelonSticker}. Any other SVG attribute is forwarded to the root element. */
 interface WatermelonStickerProps extends SVGProps<SVGSVGElement> {
+  /** Width and height in pixels. */
   size?: number;
 }
 
 /**
- * Kawaii pastel watermelon slice sticker for Strawberry Diary
+ * Pastel watermelon slice sticker.
+ *
+ * Decorative only: the SVG is hidden from assistive technology.
  */
 export const WatermelonSticker: FC<WatermelonStickerProps> = ({
   size = 36,

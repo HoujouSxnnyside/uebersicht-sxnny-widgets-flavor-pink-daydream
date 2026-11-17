@@ -23,6 +23,6 @@
     },
     "types": ["bun-types"]
   },
-  "include": ["src/**/*", "scripts/**/*", "test/**/*"],
+  "include": ["src/**/*", "scripts/**/*", "tests/**/*"],
   "exclude": ["node_modules", "dist", ".build"]
 }

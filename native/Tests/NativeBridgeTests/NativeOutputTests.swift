@@ -2,12 +2,14 @@ import Foundation
 @testable import NativeBridgeCore
 import XCTest
 
+/// A minimal payload used to exercise JSON encoding and decoding.
 struct SamplePayload: Codable, Equatable {
     let alpha: String
     let beta: Int
 }
 
-final class NativeBridgeTests: XCTestCase {
+/// Tests for the JSON conventions shared by the native command-line tools.
+final class NativeOutputTests: XCTestCase {
     func testNativeOutputEncoding() throws {
         let payload = SamplePayload(alpha: "pink", beta: 42)
         let encoder = JSONEncoder()

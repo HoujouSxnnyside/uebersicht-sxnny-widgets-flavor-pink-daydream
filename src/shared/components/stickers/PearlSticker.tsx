@@ -1,11 +1,15 @@
 import type { FC, SVGProps } from 'react';
 
+/** Props for {@link PearlSticker}. Any other SVG attribute is forwarded to the root element. */
 interface PearlStickerProps extends SVGProps<SVGSVGElement> {
+  /** Width and height in pixels. */
   size?: number;
 }
 
 /**
- * Lustrous pearl sticker for jewelry accents and decorative details
+ * Lustrous pearl sticker for jewelry-style details.
+ *
+ * Decorative only: the SVG is hidden from assistive technology.
  */
 export const PearlSticker: FC<PearlStickerProps> = ({ size = 18, className, style, ...props }) => {
   return (

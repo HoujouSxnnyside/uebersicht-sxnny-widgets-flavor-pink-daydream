@@ -1,13 +1,19 @@
 import type { FC, SVGProps } from 'react';
 
+/** Props for {@link ButterflySticker}. Any other SVG attribute is forwarded to the root element. */
 interface ButterflyStickerProps extends SVGProps<SVGSVGElement> {
+  /** Width and height in pixels. */
   size?: number;
+  /** Fill color of the wings. */
   wingColor?: string;
+  /** Color of the wing accents. */
   accentColor?: string;
 }
 
 /**
- * Aesthetic pastel butterfly with delicate lavender wings
+ * Pastel butterfly sticker with lavender wings.
+ *
+ * Decorative only: the SVG is hidden from assistive technology.
  */
 export const ButterflySticker: FC<ButterflyStickerProps> = ({
   size = 36,

@@ -6,7 +6,7 @@ const IMAGES_DIR = resolve(import.meta.dir, '../src/shared/assets/images');
 const DIST_IMAGES_DIR = resolve(import.meta.dir, '../dist/assets/images');
 
 /**
- * Semantic names for key Pink Daydream illustrations (1..37)
+ * Semantic constant names for the numbered illustrations, from 1 to 37.
  */
 const SEMANTIC_NAMES: Record<number, string> = {
   1: 'ASSET_STRAWBERRY_SINGLE',
@@ -48,6 +48,9 @@ const SEMANTIC_NAMES: Record<number, string> = {
   37: 'ASSET_PICNIC_BLANKET',
 };
 
+/**
+ * Converts the illustrations to WebP and AVIF and regenerates `src/shared/assets/images/index.ts`.
+ */
 export async function optimizeAssets() {
   console.log('[assets] Starting Sharp WebP/AVIF optimization for 37 illustration assets...');
   await mkdir(DIST_IMAGES_DIR, { recursive: true });

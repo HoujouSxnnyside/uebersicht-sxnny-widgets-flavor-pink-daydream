@@ -1,11 +1,15 @@
 import type { FC, SVGProps } from 'react';
 
+/** Props for {@link StrawberrySticker}. Any other SVG attribute is forwarded to the root element. */
 interface StrawberryStickerProps extends SVGProps<SVGSVGElement> {
+  /** Width and height in pixels. */
   size?: number;
 }
 
 /**
- * Kawaii scrapbook pastel strawberry sticker for Strawberry Diary
+ * Pastel strawberry sticker.
+ *
+ * Decorative only: the SVG is hidden from assistive technology.
  */
 export const StrawberrySticker: FC<StrawberryStickerProps> = ({
   size = 36,

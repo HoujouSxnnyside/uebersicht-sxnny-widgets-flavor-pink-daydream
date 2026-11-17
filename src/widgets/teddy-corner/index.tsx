@@ -19,14 +19,15 @@ import type { UbersichtRenderProps } from '@/shared/types/ubersicht';
 ensurePinkDaydreamFonts();
 
 /**
- * 04 — Teddy & Bunny Corner
- * Awwwards-level interactive desktop companion featuring lively White Bunny
- * mascot poses, spring physics, and encouraging handwritten fortune notes.
+ * Teddy Corner: a desktop companion with an encouraging handwritten note that changes
+ * every minute.
  */
-
+/** Prints the current minute, which selects the quote and the pose. */
 export const command = 'date +%M';
+/** Refresh interval in milliseconds (1 minute). */
 export const refreshFrequency = 60000;
 
+/** Places the widget in the bottom left corner, inside the safe area. */
 export const className = `
   bottom: ${theme.safeArea.bottom};
   left: ${theme.safeArea.left};
@@ -216,6 +217,11 @@ const MASCOT_POSES = [
   ASSET_BUNNY_BERRY_BALLOON,
 ];
 
+/**
+ * Renders the Teddy Corner card.
+ *
+ * @param props - The command output from Übersicht.
+ */
 export const render = ({ output }: UbersichtRenderProps) => {
   const i18n = getI18n();
   const minute = parseInt(output?.trim() || '0', 10) || 0;

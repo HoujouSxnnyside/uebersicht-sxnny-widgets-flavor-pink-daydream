@@ -1,11 +1,14 @@
 {
   "name": "sxnny-pink-daydream",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Artisanal pastel stationery suite of desktop widgets for macOS running on Übersicht",
-  "license": "LicenseRef-SPUL",
+  "license": "PolyForm-Noncommercial-1.0.0",
   "author": "HoujouSxnnyside",
   "repository": "https://github.com/HoujouSxnnyside/uebersicht-sxnny-widgets-flavor-pink-daydream",
-  "packageManager": "bun@1.4.2",
+  "engines": {
+    "bun": ">=1.4.0"
+  },
+  "packageManager": "bun@1.4.4",
   "private": true,
   "type": "module",
   "scripts": {
@@ -32,9 +35,9 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.15",
-    "@iconify-json/mingcute": "^1.2.8",
-    "@types/bun": "1.4.2",
+    "@biomejs/biome": "2.6.8",
+    "@iconify-json/mingcute": "1.2.10",
+    "@types/bun": "1.4.4",
     "@types/react": "18.2.0",
     "@types/react-dom": "18.2.0",
     "@types/sharp": "0.32.0",

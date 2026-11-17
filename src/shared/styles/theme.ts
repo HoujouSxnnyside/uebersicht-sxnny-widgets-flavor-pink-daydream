@@ -1,6 +1,5 @@
 /**
- * Visual identity and palette: Pink Daydream
- * Dreamcore, coquette and pastel scrapbook theme for Übersicht
+ * Design tokens of the Pink Daydream theme: colors, fonts, radii, shadows and safe areas.
  */
 export const theme = {
   colors: {
@@ -37,8 +36,7 @@ export const theme = {
 
   fonts: {
     // Rounded typography for data and metrics
-    rounded:
-      '"Nunito", "Quicksand", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+    rounded: '"Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
     // Handwritten font for notes, dates and custom accents
     handwritten: '"Grechen Fuemen", cursive',
     // System font
@@ -82,4 +80,5 @@ export const theme = {
   },
 } as const;
 
+/** Shape of the {@link theme} object. */
 export type Theme = typeof theme;

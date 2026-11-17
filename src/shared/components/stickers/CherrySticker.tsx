@@ -1,13 +1,19 @@
 import type { FC, SVGProps } from 'react';
 
+/** Props for {@link CherrySticker}. Any other SVG attribute is forwarded to the root element. */
 interface CherryStickerProps extends SVGProps<SVGSVGElement> {
+  /** Width and height in pixels. */
   size?: number;
+  /** Fill color of the cherries. */
   cherryColor?: string;
+  /** Stroke color of the stems. */
   stemColor?: string;
 }
 
 /**
- * Kawaii pastel cherry pair sticker for scrapbook accents
+ * Pair of cherries sticker used as a scrapbook accent.
+ *
+ * Decorative only: the SVG is hidden from assistive technology.
  */
 export const CherrySticker: FC<CherryStickerProps> = ({
   size = 36,

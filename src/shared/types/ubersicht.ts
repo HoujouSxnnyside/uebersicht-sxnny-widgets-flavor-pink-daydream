@@ -1,7 +1,9 @@
 import type { ReactNode } from 'react';
 
 /**
- * Standard properties passed by Übersicht to the `render` function
+ * Properties Übersicht passes to the `render` function of a widget.
+ *
+ * @typeParam T - The shape of `data`.
  */
 export interface UbersichtRenderProps<T = unknown> {
   /** Output from `command` execution (stdout plain text or serialized JSON) */
@@ -13,7 +15,9 @@ export interface UbersichtRenderProps<T = unknown> {
 }
 
 /**
- * Übersicht Widget Definition Contract
+ * The module contract of an Übersicht widget.
+ *
+ * @typeParam T - The shape of the data passed to `render`.
  */
 export interface UbersichtWidgetDefinition<T = unknown> {
   /** Shell command or binary path executed periodically */

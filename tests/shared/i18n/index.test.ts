@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'bun:test';
-import { formatSystemDate, getI18n, getSystemLocale, isSpanishLocale } from '../src/shared/i18n';
+import { formatSystemDate, getI18n, getSystemLocale, isSpanishLocale } from '@/shared/i18n';
 
 describe('i18n system', () => {
   it('defaults getSystemLocale safely in non-browser environment', () => {

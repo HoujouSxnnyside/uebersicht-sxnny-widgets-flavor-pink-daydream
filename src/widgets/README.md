@@ -18,12 +18,12 @@ src/widgets/
 ## Übersicht Export Contract
 
 ```tsx
-import { css } from "@emotion/css";
-import type { UbersichtRenderProps } from "@/shared/types/ubersicht";
-import { safeParseJson } from "@/shared/utils/json";
+import { css } from '@emotion/css';
+import type { UbersichtRenderProps } from '@/shared/types/ubersicht';
+import { safeParseJson } from '@/shared/utils/json';
 
 // 1. Command to execute (e.g. compiled Swift binary or shell script)
-export const command = "./bin/system-info";
+export const command = './bin/system-info';
 
 // 2. Refresh interval in milliseconds (e.g. every 2 seconds)
 export const refreshFrequency = 2000;

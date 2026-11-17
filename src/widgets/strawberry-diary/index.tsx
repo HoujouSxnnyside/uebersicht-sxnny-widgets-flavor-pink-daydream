@@ -13,26 +13,25 @@ import { ensurePinkDaydreamFonts } from '@/shared/styles/global';
 import { theme } from '@/shared/styles/theme';
 import type { UbersichtRenderProps } from '@/shared/types/ubersicht';
 
-// Ensure Pink Daydream embedded fonts
 ensurePinkDaydreamFonts();
 
 /**
- * 05 — Strawberry Diary
- * Quick notes and tasks card inspired by strawberries, watermelon, and cherries.
- * Styled as stationery post-it tags.
+ * Strawberry Diary: a stationery note card with tasks and a thought of the day.
  *
- * Reads custom notes from ~/.strawberry-diary.txt if present.
- * Supported format:
+ * Notes are read from `~/.strawberry-diary.txt` when it exists. Supported format:
  *   [x] Completed task
  *   [ ] Pending task
  *   > Thought of the day
  *   Simple reminder
  */
 
+/** Reads the diary file from the home folder, or from Documents as a fallback. */
 export const command =
   "cat ~/.strawberry-diary.txt 2>/dev/null || cat ~/Documents/strawberry-diary.txt 2>/dev/null || echo ''";
-export const refreshFrequency = 15000; // Refresh every 15s to reflect edits
+/** Refresh interval in milliseconds (15 seconds), so edits to the file show up quickly. */
+export const refreshFrequency = 15000;
 
+/** Places the widget on the right side, below the weather card. */
 export const className = `
   top: calc(${theme.safeArea.top} + 235px);
   right: ${theme.safeArea.right};
@@ -210,6 +209,7 @@ const pathHintStyle = css`
   user-select: text;
 `;
 
+/** The diary content after parsing. */
 interface ParsedDiary {
   tasks: { text: string; done: boolean }[];
   thought?: string;
@@ -218,6 +218,11 @@ interface ParsedDiary {
 
 const STORAGE_OVERRIDE_KEY = 'pink_daydream_tasks_override';
 
+/**
+ * Reads the task states the user toggled in the widget.
+ *
+ * @returns A map from task text to its done state, or an empty map when storage is unavailable.
+ */
 function getTaskOverrides(): Record<string, boolean> {
   if (typeof window === 'undefined' || !window.localStorage) return {};
   try {
@@ -228,6 +233,14 @@ function getTaskOverrides(): Record<string, boolean> {
   }
 }
 
+/**
+ * Parses the diary text into tasks and a thought of the day.
+ *
+ * Lines starting with `[ ]` or `[x]` are tasks, and a line starting with `>` is the thought.
+ *
+ * @param raw - The raw contents of the diary file.
+ * @returns The parsed diary, using default tasks when the file is empty.
+ */
 function parseDiaryContent(raw?: string): ParsedDiary {
   const i18n = getI18n();
   const trimmed = typeof raw === 'string' ? raw.trim() : '';
@@ -312,6 +325,11 @@ const thoughtBtnStyle = css`
   color: inherit;
 `;
 
+/**
+ * Renders the Strawberry Diary card.
+ *
+ * @param props - The command output from Übersicht.
+ */
 export const render = ({ output }: UbersichtRenderProps) => {
   const i18n = getI18n();
   const diary = parseDiaryContent(output);

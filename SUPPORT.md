@@ -5,6 +5,12 @@
 **GitHub Issues**
 For bugs or unexpected behavior, open an [issue](https://github.com/HoujouSxnnyside/uebersicht-sxnny-widgets-flavor-pink-daydream/issues). Use the bug report template and include enough context to reproduce the problem.
 
+**Discord**
+For questions, general discussion, or anything that isn't a bug — join the Sxnnyside Project community at [discord.gg/h3hhNY8VTE](https://discord.gg/h3hhNY8VTE).
+
+**Email**
+For anything that doesn't fit the channels above — `support.sxnnyside@sxnnysideproject.com`.
+
 ---
 
 ## Before Asking
@@ -16,8 +22,7 @@ For bugs or unexpected behavior, open an [issue](https://github.com/HoujouSxnnys
 
 ## What This Isn't
 
-This project is not open for contributions. Issues are the only supported channel.
-Response times are not guaranteed.
+This is not a priority support channel. Response times are not guaranteed.
 For security vulnerabilities, see [SECURITY.md](SECURITY.md).
 
 ---

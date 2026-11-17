@@ -5,7 +5,7 @@
 If you find a security vulnerability in **Sxnny Pink Daydream**, report it privately before disclosing it publicly.
 
 **Preferred channel:**
-Email — `legal.sxnnyside@sxnnysideproject.com`
+Email — `security.sxnnyside@sxnnysideproject.com`
 
 **Alternative:**
 [GitHub Private Security Advisory](https://github.com/HoujouSxnnyside/uebersicht-sxnny-widgets-flavor-pink-daydream/security/advisories/new)
@@ -18,6 +18,8 @@ Email — `legal.sxnnyside@sxnnysideproject.com`
 - Steps to reproduce
 - Potential impact
 - Your suggested fix, if you have one
+
+The more context you provide, the faster it gets resolved.
 
 ---
 
@@ -36,11 +38,13 @@ This is a solo-maintained project. That window reflects reality, not indifferenc
 3. If confirmed, a fix is developed and shipped.
 4. You're credited in the changelog unless you prefer otherwise.
 
+Public disclosure is expected after a fix is available. If a fix isn't possible, that will be communicated directly.
+
 ---
 
 ## Scope
 
-This policy covers the **uebersicht-sxnny-widgets-flavor-pink-daydream** repository only.
+This policy covers the **Sxnny Pink Daydream** repository only.
 For ecosystem-wide security concerns, use the email above.
 
 ---

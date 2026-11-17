@@ -3,6 +3,7 @@
 Directory for lightweight Bash/Zsh scripts or prototypes before migrating to native Swift CLI tools.
 
 ## Übersicht Integration Rule
+
 For seamless integration with React + TypeScript widgets, shell scripts must always output valid single-line JSON to `stdout`:
 
 ```bash

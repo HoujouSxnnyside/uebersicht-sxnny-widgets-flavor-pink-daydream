@@ -1,16 +1,27 @@
 import { css } from '@emotion/css';
 import type { CSSProperties, FC } from 'react';
 
+/** Props for {@link StickerImage}. */
 export interface StickerImageProps {
+  /** Image source, usually a data URL exported from `@/shared/assets/images`. */
   src: string;
+  /** Accessible description of the sticker. */
   alt?: string;
+  /** Width and height in pixels when `width` and `height` are not set. */
   size?: number;
+  /** Width in pixels. Overrides `size`. */
   width?: number;
+  /** Height in pixels. Overrides `size`. */
   height?: number;
+  /** Extra class name appended to the image. */
   className?: string;
+  /** Inline styles merged after the generated ones. */
   style?: CSSProperties;
+  /** Whether the sticker lifts and tilts on hover. */
   interactive?: boolean;
+  /** Whether to add a soft glow around the sticker. */
   glow?: boolean;
+  /** Rotation in degrees. */
   rotate?: number;
 }
 
@@ -48,8 +59,9 @@ const glowStyle = css`
 `;
 
 /**
- * StickerImage — Ultra-crisp WebP die-cut sticker component with
- * Apple-grade spring physics, gloss shadows, and interactive hover peeling.
+ * Renders an illustrated die-cut sticker with a soft drop shadow.
+ *
+ * When `interactive` is set, the sticker lifts and tilts on hover.
  */
 export const StickerImage: FC<StickerImageProps> = ({
   src,

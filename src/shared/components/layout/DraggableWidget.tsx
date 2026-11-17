@@ -2,18 +2,25 @@ import type { CSSProperties, FC, ReactNode } from 'react';
 import { getI18n } from '@/shared/i18n';
 import { getWidgetOffset, resetWidgetOffset, startWidgetDrag } from '@/shared/utils/draggable';
 
+/** Props for {@link DraggableWidget}. */
 export interface DraggableWidgetProps {
+  /** Stable widget identifier, used as the key for the saved position. */
   widgetId: string;
+  /** Card content. Elements marked as drag handles start the drag. */
   children: ReactNode;
+  /** Extra class name appended to the wrapper. */
   className?: string;
+  /** Inline styles merged after the generated ones. */
   style?: CSSProperties;
+  /** Accessible label and tooltip. Defaults to the translated drag hint. */
   title?: string;
 }
 
 /**
- * Reusable DraggableWidget wrapper adhering to DRY and Single Responsibility.
- * Encapsulates coordinate retrieval, mouse event listeners, double-click reset,
- * and 60fps hardware-accelerated translate3d transforms.
+ * Wraps a widget card so it can be dragged by its handle.
+ *
+ * The saved position is restored on render, and double-clicking a handle resets it.
+ * The wrapper itself ignores pointer events so empty areas stay click-through.
  */
 export const DraggableWidget: FC<DraggableWidgetProps> = ({
   widgetId,

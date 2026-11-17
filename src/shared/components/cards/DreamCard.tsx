@@ -2,12 +2,31 @@ import { css } from '@emotion/css';
 import type { CSSProperties, FC, ReactNode } from 'react';
 import { theme } from '@/shared/styles/theme';
 
+/** Props for {@link DreamCard}. */
 export interface DreamCardProps {
+  /** Content rendered inside the card. */
   children: ReactNode;
+  /**
+   * Paper style of the card. `cream` and `bubble` currently fall back to `stationery`.
+   *
+   * @defaultValue `'stationery'`
+   */
   variant?: 'stationery' | 'cream' | 'notebook' | 'confectionery' | 'bubble';
+  /** Extra class name appended to the card. */
   className?: string;
+  /** Inline styles merged after the generated ones. */
   style?: CSSProperties;
+  /**
+   * CSS padding of the card.
+   *
+   * @defaultValue `'20px 24px'`
+   */
   padding?: string;
+  /**
+   * CSS border radius of the card.
+   *
+   * @defaultValue `theme.radii.xl`
+   */
   borderRadius?: string;
 }
 
@@ -110,6 +129,12 @@ const variantConfectioneryStyle = css`
   }
 `;
 
+/**
+ * Picks the Emotion class for a card variant.
+ *
+ * @param variant - The requested variant.
+ * @returns The matching class name, defaulting to the stationery paper.
+ */
 const getVariantStyle = (variant: DreamCardProps['variant']) => {
   switch (variant) {
     case 'notebook':
@@ -122,9 +147,9 @@ const getVariantStyle = (variant: DreamCardProps['variant']) => {
 };
 
 /**
- * DreamCard — The unified Awwwards-level luxury tactile stationery container.
- * 100% opaque, ultra-accessible against any wallpaper, with handcrafted polka-dots (lunares),
- * stitched borders, and multi-tier ambient shadows.
+ * Stationery-paper card that holds the content of a widget.
+ *
+ * The card is fully opaque so text stays readable over any wallpaper.
  */
 export const DreamCard: FC<DreamCardProps> = ({
   children,

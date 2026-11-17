@@ -1,9 +1,5 @@
 import { beforeEach, describe, expect, it } from 'bun:test';
-import {
-  getWidgetOffset,
-  resetWidgetOffset,
-  saveWidgetOffset,
-} from '../src/shared/utils/draggable';
+import { getWidgetOffset, resetWidgetOffset, saveWidgetOffset } from '@/shared/utils/draggable';
 
 describe('draggable utility', () => {
   beforeEach(() => {

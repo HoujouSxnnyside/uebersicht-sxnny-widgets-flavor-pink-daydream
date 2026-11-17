@@ -1,7 +1,10 @@
 import type { MouseEvent as ReactMouseEvent } from 'react';
 
+/** Distance a widget has been moved from its default position, in pixels. */
 export interface WidgetOffset {
+  /** Horizontal distance. */
   dx: number;
+  /** Vertical distance. */
   dy: number;
 }
 
@@ -9,7 +12,10 @@ const STORAGE_PREFIX = 'pink_daydream_pos_';
 const DRAG_THRESHOLD_PX = 4;
 
 /**
- * Retrieves the saved widget offset from localStorage
+ * Reads the saved offset of a widget from `localStorage`.
+ *
+ * @param widgetId - The widget identifier.
+ * @returns The saved offset, or `{ dx: 0, dy: 0 }` when none is saved or storage is unavailable.
  */
 export function getWidgetOffset(widgetId: string): WidgetOffset {
   if (typeof window === 'undefined' || !window.localStorage) {
@@ -28,7 +34,12 @@ export function getWidgetOffset(widgetId: string): WidgetOffset {
 }
 
 /**
- * Persists widget offset coordinates to localStorage
+ * Saves the offset of a widget to `localStorage`.
+ *
+ * Does nothing when storage is unavailable.
+ *
+ * @param widgetId - The widget identifier.
+ * @param offset - The offset to save.
  */
 export function saveWidgetOffset(widgetId: string, offset: WidgetOffset): void {
   if (typeof window === 'undefined' || !window.localStorage) return;
@@ -38,7 +49,10 @@ export function saveWidgetOffset(widgetId: string, offset: WidgetOffset): void {
 }
 
 /**
- * Resets the widget position back to default coordinates
+ * Removes the saved offset of a widget and moves it back to its default position.
+ *
+ * @param widgetId - The widget identifier.
+ * @param elementId - The DOM id of the widget element. Defaults to the known widget ids.
  */
 export function resetWidgetOffset(widgetId: string, elementId?: string): void {
   if (typeof window === 'undefined') return;
@@ -55,10 +69,15 @@ export function resetWidgetOffset(widgetId: string, elementId?: string): void {
 }
 
 /**
- * Initiates 60fps hardware-accelerated drag-and-drop for a widget.
- * Does NOT call preventDefault on mousedown to preserve full interactivity,
- * clicking, checkbox toggling, and text selection within child elements.
- * Only initiates dragging once mouse movement exceeds DRAG_THRESHOLD_PX.
+ * Starts dragging a widget from a `mousedown` event.
+ *
+ * Dragging only starts from an element marked with `data-drag-handle="true"` or the
+ * `widget-drag-handle` class, and only after the pointer moves past a small threshold.
+ * The event is not cancelled, so clicks, checkboxes and text selection keep working.
+ *
+ * @param e - The `mousedown` event.
+ * @param widgetId - The widget identifier, used to save the final position.
+ * @param elementId - The DOM id of the widget element to move.
  */
 export function startWidgetDrag(
   e: ReactMouseEvent<HTMLElement>,

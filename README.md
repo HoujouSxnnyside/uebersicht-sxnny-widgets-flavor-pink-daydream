@@ -1,10 +1,13 @@
 # Sxnny Pink Daydream
 
-![Banner](docs/assets/preview.png)
+![Sxnny Pink Daydream banner](docs/assets/sxnny-pink-daydream-banner.png)
 
-![Version](https://img.shields.io/badge/version-0.1.0-blue)
-![License](https://img.shields.io/badge/License-SPUL-yellow)
-![CI](https://github.com/HoujouSxnnyside/uebersicht-sxnny-widgets-flavor-pink-daydream/actions/workflows/ci.yml/badge.svg)
+![Version](https://img.shields.io/badge/version-0.2.0-blue)
+![License](https://img.shields.io/badge/License-PolyForm_NC_1.0.0-yellow)
+[![CI](https://github.com/HoujouSxnnyside/uebersicht-sxnny-widgets-flavor-pink-daydream/actions/workflows/ci.yml/badge.svg)](https://github.com/HoujouSxnnyside/uebersicht-sxnny-widgets-flavor-pink-daydream/actions/workflows/ci.yml)
+![Platform](https://img.shields.io/badge/platform-macOS-lightgrey)
+[![Discord](https://img.shields.io/badge/Discord-join-5865F2)](https://discord.gg/h3hhNY8VTE)
+[![Patreon](https://img.shields.io/badge/Patreon-SxnnysideProject-F96854)](https://www.patreon.com/SxnnysideProject)
 
 <p align="center">
   <strong>Pastel Stationery Suite ✦ Tactile Scrapbook Desktop ✦ Ergonomic macOS Sanctuary</strong><br>
@@ -16,7 +19,8 @@
   <a href="#features">Features</a> ✦
   <a href="#installation">Installation</a> ✦
   <a href="#usage">Usage</a> ✦
-  <a href="#architecture">Architecture</a>
+  <a href="#architecture">Architecture</a> ✦
+  <a href="#contributing">Contributing</a>
 </p>
 
 ---
@@ -33,7 +37,7 @@ Every piece is engineered to live harmoniously alongside your daily work: each c
 
 > *"Technology should feel as warm and intimate as handwritten letters on cream stationery, inviting calm, delight, and gentle focus into your workspace."*
 
-Personal project by HoujouSxnnyside. Part of the [Sxnnyside Project](https://sxnnysideproject.com).
+Part of the [Sxnnyside Project](https://sxnnysideproject.com).
 
 ## Features
 
@@ -64,7 +68,7 @@ No terminal, compiler, or developer tooling required:
 
 ### From Source
 
-For local development or customization (requires [Bun](https://bun.sh) `>= 1.1.0`, [Swift](https://swift.org) `>= 6.0`, and [Just](https://github.com/casey/just)):
+For local development or customization (requires [Bun](https://bun.sh) `>= 1.4.0`, [Swift](https://swift.org) `>= 6.0`, and [Just](https://github.com/casey/just)):
 
 ```bash
 git clone https://github.com/HoujouSxnnyside/uebersicht-sxnny-widgets-flavor-pink-daydream.git
@@ -114,11 +118,17 @@ uebersicht-sxnny-widgets-flavor-pink-daydream/
 └── dist/                     # Distribution bundles (sxnny-pink-daydream/)
 ```
 
+## Contributing
+
+Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) and the [Code of Conduct](CODE_OF_CONDUCT.md).
+
 ## License
 
-This project is licensed under the SPUL — see the [LICENSE](LICENSE) file for details.
+Licensed under the [PolyForm Noncommercial License 1.0.0](LICENSE): free for non-commercial use.
 
 ## Notes
+
+Fonts are self-hosted under the SIL Open Font License 1.1: [Nunito](src/shared/assets/fonts/nunito-OFL.txt) and [Grechen Fuemen](src/shared/assets/fonts/grechen-fuemen-OFL.txt).
 
 All visual illustration assets and decorative artwork were created by [starcolors13](https://www.deviantart.com/starcolors13).
 

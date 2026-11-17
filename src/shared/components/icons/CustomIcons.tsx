@@ -1,7 +1,9 @@
 import type { FC, SVGProps } from 'react';
 
 /**
- * Sparkle icon in MingCute style
+ * Four-point sparkle icon.
+ *
+ * @param props - SVG attributes. `size` sets width and height in pixels.
  */
 export const SparkleIcon: FC<SVGProps<SVGSVGElement> & { size?: number }> = ({
   size = 14,
@@ -22,7 +24,9 @@ export const SparkleIcon: FC<SVGProps<SVGSVGElement> & { size?: number }> = ({
 );
 
 /**
- * Gentle outlined heart icon in MingCute style
+ * Outlined heart icon.
+ *
+ * @param props - SVG attributes. `size` sets width and height in pixels.
  */
 export const HeartIcon: FC<SVGProps<SVGSVGElement> & { size?: number }> = ({
   size = 14,
@@ -48,7 +52,9 @@ export const HeartIcon: FC<SVGProps<SVGSVGElement> & { size?: number }> = ({
 );
 
 /**
- * Calendar icon in MingCute style
+ * Calendar icon.
+ *
+ * @param props - SVG attributes. `size` sets width and height in pixels.
  */
 export const CalendarIcon: FC<SVGProps<SVGSVGElement> & { size?: number }> = ({
   size = 14,

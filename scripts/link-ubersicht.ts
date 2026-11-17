@@ -16,6 +16,15 @@ const WIDGET_FILES = [
   'blush-system.jsx',
 ];
 
+/**
+ * Replaces `destination` with a symbolic link to `target`.
+ *
+ * Logs an error instead of throwing when the link cannot be created.
+ *
+ * @param target - The path the link points to.
+ * @param destination - The path of the link.
+ * @param type - Whether the target is a file or a directory.
+ */
 async function safeSymlink(target: string, destination: string, type: 'file' | 'dir' = 'file') {
   try {
     await rm(destination, { recursive: true, force: true });
@@ -29,6 +38,9 @@ async function safeSymlink(target: string, destination: string, type: 'file' | '
   }
 }
 
+/**
+ * Links the built widgets into the Übersicht widgets folder and refreshes Übersicht.
+ */
 async function link() {
   try {
     await mkdir(UBERSICHT_WIDGETS_DIR, { recursive: true });

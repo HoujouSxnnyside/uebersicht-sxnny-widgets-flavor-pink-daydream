@@ -1,5 +1,4 @@
 # Justfile — Übersicht Sxnny Widgets
-# Standard task runner abstraction layer for Sxnnyside Project (v2.1.0)
 
 set shell := ["bash", "-c"]
 
@@ -77,6 +76,9 @@ package: build
     @mkdir -p dist/package/sxnny-pink-daydream/bin
     @cp dist/*.jsx dist/package/sxnny-pink-daydream/
     @cp -r dist/bin/* dist/package/sxnny-pink-daydream/bin/
+    @cp LICENSE dist/package/sxnny-pink-daydream/
+    @mkdir -p dist/package/sxnny-pink-daydream/licenses
+    @cp src/shared/assets/fonts/*-OFL.txt dist/package/sxnny-pink-daydream/licenses/
     @cd dist/package && zip -q -r ../sxnny-pink-daydream.zip sxnny-pink-daydream/
     @rm -rf dist/package
     @echo "[package] Created dist/sxnny-pink-daydream.zip ready for Übersicht"

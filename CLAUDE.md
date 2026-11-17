@@ -7,7 +7,7 @@ This document serves as the primary technical specification for AI agents and de
 - **Aesthetic:** Pink Daydream (Japanese craft stationery, coquette scrapbooking, soft rose palette, and textured paper cards).
 - **Target Platform:** macOS 14.0+ (Sonoma, Sequoia) running [Übersicht](https://tracesof.net/uebersicht/).
 - **Maintainer:** HoujouSxnnyside
-- **License:** SPUL (Sxnnyside Personal Use License)
+- **License:** PolyForm Noncommercial 1.0.0
 
 ## 2. Architecture & Languages
 - **Frontend:** React 18, Emotion (`@emotion/css`), TypeScript, bundled with Bun into standalone `dist/*.jsx` widgets.
@@ -36,6 +36,7 @@ just clean        # Remove build caches and artifacts
 
 ## 4. Engineering & Aesthetic Rules
 - **No Raw Emojis:** MingCute icons (`@iconify-json/mingcute` / `MingCuteIcon`) and SVG stickers (`src/shared/components/stickers/`) must be used for all visual symbols. Strings in code and logs must not contain raw emojis.
+- **Naming:** React component files use `PascalCase.tsx` (`DreamCard.tsx`), plain TypeScript files use `kebab-case.ts` (`draggable.ts`), Swift files use `PascalCase.swift` named after the primary type. Widget entry points stay `index.tsx` because Übersicht loads them by folder. Biome enforces the TypeScript rules.
 - **English Everywhere:** 100% of documentation, comments, log messages, and error messages must be written in English.
 - **Safe Area Margins:** Widgets must respect macOS menu bar (`safeArea.top`) and Dock (`safeArea.bottom`).
 - **Drag & Drop:** Every widget must wrap its card inside `<DraggableWidget id="...">` for persistent desktop placement.
@@ -52,5 +53,5 @@ just clean        # Remove build caches and artifacts
 | `native/Sources/Core/` | NativeBridgeCore Swift models and JSON serialization |
 | `native/Sources/CLI/` | Native Swift CLI probe executables (weather, calendar, system) |
 | `scripts/` | Build watcher, asset optimizer, and CI git hook scripts |
-| `test/` | Automated unit tests for TypeScript utilities |
+| `tests/` | Automated unit tests for TypeScript utilities, mirroring `src/` |
 | `dist/` | Compiled JavaScript widgets and release CLI binaries |

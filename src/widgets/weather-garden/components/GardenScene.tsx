@@ -13,7 +13,9 @@ import {
 } from '@/shared/assets/images';
 import { StickerImage } from '@/shared/components/stickers';
 
+/** Props for {@link GardenScene}. */
 interface GardenSceneProps {
+  /** The weather condition that selects the scene. */
   condition: 'sunny' | 'partlyCloudy' | 'cloudy' | 'rainy' | 'stormy' | 'snowy' | 'night';
 }
 
@@ -108,8 +110,7 @@ const rainStreamStyle = css`
 `;
 
 /**
- * GardenScene — Living botanical conservatory scene utilizing bespoke
- * WebP botanical illustrations and responsive atmospheric lighting.
+ * Illustrated garden scene that reflects the current weather condition.
  */
 export const GardenScene: FC<GardenSceneProps> = ({ condition }) => {
   switch (condition) {

@@ -20,14 +20,15 @@ import type { UbersichtRenderProps } from '@/shared/types/ubersicht';
 ensurePinkDaydreamFonts();
 
 /**
- * 01 — Sweet Time (Pink Daydream Maison Clock)
- * Awwwards-level luxury confectionery clock widget featuring an antique lace
- * cameo medallion and dynamic time-of-day confectionery companions.
+ * Sweet Time: a confectionery-style digital clock with a handwritten date card.
+ * The companion illustration changes with the time of day.
  */
-
+/** Prints the current date and time as pipe-separated fields. */
 export const command = "date '+%Y|%m|%d|%H|%M|%S|%A|%B'";
+/** Refresh interval in milliseconds (1 second). */
 export const refreshFrequency = 1000;
 
+/** Places the widget in the top left corner, inside the safe area. */
 export const className = `
   top: ${theme.safeArea.top};
   left: ${theme.safeArea.left};
@@ -36,6 +37,7 @@ export const className = `
   pointer-events: none;
 `;
 
+/** The time values displayed by the clock. */
 interface TimeState {
   hours: string;
   minutes: string;
@@ -48,6 +50,12 @@ interface TimeState {
   rawHour: number;
 }
 
+/**
+ * Parses the output of the `date` command.
+ *
+ * @param output - Pipe-separated date fields printed by {@link command}.
+ * @returns The time to show, using the system clock when the output is missing or invalid.
+ */
 function parseOutputOrNow(output?: string): TimeState {
   const now = new Date();
   const dayOfWeek = formatSystemDate(now, { weekday: 'long' });
@@ -283,6 +291,11 @@ const handwrittenDateStyle = css`
   letter-spacing: 0.5px;
 `;
 
+/**
+ * Renders the Sweet Time card.
+ *
+ * @param props - The command output from Übersicht.
+ */
 export const render = ({ output }: UbersichtRenderProps) => {
   const time = parseOutputOrNow(output);
 

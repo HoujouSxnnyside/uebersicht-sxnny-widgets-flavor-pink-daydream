@@ -1,14 +1,21 @@
 import type { FC, SVGProps } from 'react';
 
+/** Props for {@link FlowerSticker}. Any other SVG attribute is forwarded to the root element. */
 interface FlowerStickerProps extends SVGProps<SVGSVGElement> {
+  /** Width and height in pixels. */
   size?: number;
+  /** Base color of the petals. */
   petalColor?: string;
+  /** Color at the tip of the petals. */
   petalGradientColor?: string;
+  /** Fill color of the flower center. */
   centerColor?: string;
 }
 
 /**
- * Pastel cherry blossom / sakura flower for widget corners and cards
+ * Cherry blossom sticker for widget corners and cards.
+ *
+ * Decorative only: the SVG is hidden from assistive technology.
  */
 export const FlowerSticker: FC<FlowerStickerProps> = ({
   size = 32,

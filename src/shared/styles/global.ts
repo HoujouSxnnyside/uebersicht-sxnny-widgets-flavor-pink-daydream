@@ -1,16 +1,18 @@
 import { injectGlobal } from '@emotion/css';
-import { grechenFuemenFontFace } from './fonts';
+import { grechenFuemenFontFace, nunitoFontFace } from './fonts';
 
 let fontsInjected = false;
 
 /**
- * Ensures handwritten and rounded typography fonts are loaded into Übersicht WebKit view
+ * Injects the self-hosted fonts and base styles into the Übersicht page.
+ *
+ * Safe to call from every widget: the styles are injected once per page.
  */
-export function ensurePinkDaydreamFonts() {
+export function ensurePinkDaydreamFonts(): void {
   if (fontsInjected || typeof document === 'undefined') return;
 
   injectGlobal`
-    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800;900&family=Quicksand:wght@500;600;700&display=swap');
+    ${nunitoFontFace}
 
     ${grechenFuemenFontFace}
 

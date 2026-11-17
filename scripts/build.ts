@@ -10,13 +10,35 @@ const _SWIFT_BIN_DIR = resolve(import.meta.dir, '../native/.build/release');
 
 const isWatchMode = process.argv.includes('--watch');
 
+/** A widget that can be bundled. */
 interface WidgetEntry {
+  /** Widget name, taken from its folder or file name. */
   name: string;
+  /** Absolute path of the entry file. */
   entrypoint: string;
 }
 
 /**
- * Finds all widget entrypoints within src/widgets/
+ * Bun plugin that inlines `.woff2` font files as base64 strings so widgets work offline.
+ *
+ * Bun's `Loader` type does not list `base64`, so the file is wrapped in a JS module instead.
+ */
+const fontBase64Plugin: Bun.BunPlugin = {
+  name: 'font-base64',
+  setup(build) {
+    build.onLoad({ filter: /\.woff2$/ }, async ({ path }) => {
+      const base64 = Buffer.from(await Bun.file(path).arrayBuffer()).toString('base64');
+      return { contents: `export default ${JSON.stringify(base64)};`, loader: 'js' };
+    });
+  },
+};
+
+/**
+ * Finds the widget entry points in `src/widgets/`.
+ *
+ * A widget is a folder with an `index.tsx` or `index.jsx`, or a loose `.tsx` or `.jsx` file.
+ *
+ * @returns The widgets found, or an empty list when the folder cannot be read.
  */
 async function findWidgetEntries(): Promise<WidgetEntry[]> {
   try {
@@ -55,7 +77,7 @@ async function findWidgetEntries(): Promise<WidgetEntry[]> {
 }
 
 /**
- * Copies shell scripts and compiled Swift binaries to dist/bin/
+ * Copies the shell scripts and compiled Swift tools into `dist/bin/`.
  */
 async function copyBinariesAndScripts() {
   await mkdir(DIST_BIN_DIR, { recursive: true });
@@ -105,7 +127,7 @@ async function copyBinariesAndScripts() {
 }
 
 /**
- * Builds all widgets using Bun.build
+ * Bundles every widget into `dist/` and registers them in the Übersicht settings.
  */
 async function buildWidgets() {
   const widgets = await findWidgetEntries();
@@ -128,6 +150,7 @@ async function buildWidgets() {
       target: 'browser',
       format: 'esm',
       minify: false,
+      plugins: [fontBase64Plugin],
       define: {
         'process.env.NODE_ENV': JSON.stringify(isWatchMode ? 'development' : 'production'),
       },
@@ -152,6 +175,11 @@ async function buildWidgets() {
   console.log('[build] Build complete.');
 }
 
+/**
+ * Makes sure the given widgets are enabled in the Übersicht settings files that exist.
+ *
+ * @param widgetIds - The Übersicht widget identifiers to enable.
+ */
 async function ensureWidgetSettings(widgetIds: string[]) {
   const settingsPaths = [
     resolve(homedir(), 'Library/Application Support/tracesOf.Uebersicht/WidgetSettings.json'),

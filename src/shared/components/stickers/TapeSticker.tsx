@@ -1,14 +1,21 @@
 import type { FC, SVGProps } from 'react';
 
+/** Props for {@link TapeSticker}. Any other SVG attribute is forwarded to the root element. */
 interface TapeStickerProps extends SVGProps<SVGSVGElement> {
+  /** Width in pixels. */
   width?: number;
+  /** Height in pixels. */
   height?: number;
+  /** Fill color of the tape. */
   color?: string;
+  /** Color of the diagonal stripes. */
   patternColor?: string;
 }
 
 /**
- * Semi-transparent torn-edge washi tape sticker for scrapbook cards
+ * Semi-transparent torn-edge washi tape sticker.
+ *
+ * Decorative only: the SVG is hidden from assistive technology.
  */
 export const TapeSticker: FC<TapeStickerProps> = ({
   width = 80,

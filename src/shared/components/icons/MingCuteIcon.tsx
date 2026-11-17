@@ -3,15 +3,29 @@ import { MINGCUTE_ICONS, type MingCuteIconName } from './mingcute-data';
 
 export type { MingCuteIconName };
 
+/** Props for {@link MingCuteIcon}. Any other SVG attribute is forwarded to the root element. */
 interface MingCuteIconProps extends SVGProps<SVGSVGElement> {
+  /** Name of the icon in the bundled MingCute registry. */
   name: MingCuteIconName;
+  /**
+   * Width and height of the icon.
+   *
+   * @defaultValue `20`
+   */
   size?: number | string;
+  /**
+   * Icon color.
+   *
+   * @defaultValue `'currentColor'`
+   */
   color?: string;
 }
 
 /**
- * Official component for Iconify MingCute icons
- * Native SVG rendering, offline, ultra-lightweight with zero runtime dependencies
+ * Renders a MingCute icon from the bundled registry.
+ *
+ * The SVG markup is inlined, so the icon works offline. Renders nothing and logs a warning
+ * when `name` is not in the registry.
  */
 export const MingCuteIcon: FC<MingCuteIconProps> = ({
   name,

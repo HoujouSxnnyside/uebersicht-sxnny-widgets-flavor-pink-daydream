@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'bun:test';
-import { safeParseJson } from '../src/shared/utils/json';
+import { safeParseJson } from '@/shared/utils/json';
 
 describe('safeParseJson', () => {
   it('parses valid JSON string into typed object', () => {

@@ -11,22 +11,15 @@ import type { UbersichtRenderProps } from '@/shared/types/ubersicht';
 import { safeParseJson } from '@/shared/utils/json';
 import { GardenScene } from './components/GardenScene';
 
-// Ensure Pink Daydream embedded fonts
 ensurePinkDaydreamFonts();
 
-/**
- * Command to execute compiled Swift Weather CLI
- */
+/** Runs the native tool that prints the current weather as JSON. */
 export const command = './sxnny-pink-daydream/bin/weather-cli 2>/dev/null || ./bin/weather-cli';
 
-/**
- * Refresh frequency: 10 minutes
- */
+/** Refresh interval in milliseconds (10 minutes). */
 export const refreshFrequency = 600000;
 
-/**
- * Desktop placement on top right corner respecting safe area
- */
+/** Places the widget in the top right corner, inside the safe area. */
 export const className = `
   top: ${theme.safeArea.top};
   right: ${theme.safeArea.right};
@@ -35,6 +28,7 @@ export const className = `
   pointer-events: none;
 `;
 
+/** The weather snapshot reported by `weather-cli`. */
 interface WeatherData {
   temperature: number;
   apparentTemperature: number;
@@ -45,6 +39,7 @@ interface WeatherData {
   city: string;
 }
 
+/** Sample weather shown until real data arrives. */
 const fallbackWeather: WeatherData = {
   temperature: 24.0,
   apparentTemperature: 23.5,
@@ -179,6 +174,11 @@ const conditionLabelStyle = css`
   box-shadow: 0 2px 6px rgba(239, 169, 196, 0.15);
 `;
 
+/**
+ * Renders the Weather Garden card.
+ *
+ * @param props - The command output from Übersicht.
+ */
 export const render = ({ output }: UbersichtRenderProps) => {
   const data = safeParseJson<WeatherData>(output, fallbackWeather) || fallbackWeather;
   const i18n = getI18n();

@@ -10,22 +10,15 @@ import { theme } from '@/shared/styles/theme';
 import type { UbersichtRenderProps } from '@/shared/types/ubersicht';
 import { safeParseJson } from '@/shared/utils/json';
 
-// Ensure Pink Daydream fonts
 ensurePinkDaydreamFonts();
 
-/**
- * Command to execute compiled Swift EventKit CLI
- */
+/** Runs the native tool that prints the current month and its events as JSON. */
 export const command = './sxnny-pink-daydream/bin/calendar-cli 2>/dev/null || ./bin/calendar-cli';
 
-/**
- * Refresh frequency: 1 minute
- */
+/** Refresh interval in milliseconds (1 minute). */
 export const refreshFrequency = 60000;
 
-/**
- * Desktop placement on left column below Sweet Time
- */
+/** Places the widget in the left column, below Sweet Time. */
 export const className = `
   top: calc(${theme.safeArea.top} + 215px);
   left: ${theme.safeArea.left};
@@ -34,6 +27,7 @@ export const className = `
   pointer-events: none;
 `;
 
+/** A calendar event shown on the grid. */
 interface CalendarEventItem {
   id: string;
   day: Int32Array | number;
@@ -42,13 +36,15 @@ interface CalendarEventItem {
   colorHex?: string;
 }
 
+/** The month layout reported by `calendar-cli`. */
 interface CalendarData {
   year: number;
   month: number;
   monthName: string;
   today: number;
   daysInMonth: number;
-  firstWeekday: number; // 0 = Sunday, 1 = Monday, etc.
+  /** Weekday of the first day, where 0 is Sunday and 1 is Monday. */
+  firstWeekday: number;
   events: CalendarEventItem[];
 }
 
@@ -232,6 +228,11 @@ const notesBoxStyle = css`
   box-shadow: 0 2px 6px rgba(239, 169, 196, 0.12);
 `;
 
+/**
+ * Renders the Little Calendar card.
+ *
+ * @param props - The command output from Übersicht.
+ */
 export const render = ({ output }: UbersichtRenderProps) => {
   const data = safeParseJson<CalendarData>(output, fallbackCalendar) || fallbackCalendar;
 

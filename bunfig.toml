@@ -1,5 +1,4 @@
 # bunfig.toml — Bun configuration for Übersicht Sxnny Widgets
-# Standardized per Sxnnyside Project TypeScript/Bun Profile
 
 [install]
 # Pin exact dependency versions on install

@@ -3,20 +3,36 @@ import Foundation
 import IOKit.ps
 import NativeBridgeCore
 
+/// The system metrics printed for the Blush System widget.
 struct SystemMetricsResponse: Codable, Sendable {
+    /// CPU load across all cores, from 0 to 100.
     let cpuPercent: Double
+    /// Memory in use, from 0 to 100.
     let memoryPercent: Double
+    /// Memory in use, in gibibytes.
     let memoryUsedGB: Double
+    /// Installed physical memory, in gibibytes.
     let memoryTotalGB: Double
+    /// Used space on the startup volume, from 0 to 100.
     let diskPercent: Double
+    /// Used space on the startup volume, in gibibytes.
     let diskUsedGB: Double
+    /// Capacity of the startup volume, in gibibytes.
     let diskTotalGB: Double
+    /// Whether the Mac has an internal battery.
     let hasBattery: Bool
+    /// Battery charge, from 0 to 100.
     let batteryPercent: Int
+    /// Whether the battery is currently charging.
     let isCharging: Bool
+    /// Whether the Mac is connected to AC power.
     let isPluggedIn: Bool
 }
 
+/// Entry point of the `system-cli` tool.
+///
+/// - Author: HoujouSxnnyside
+/// - Since: 0.1.0
 @main
 struct SystemCLI {
     static func main() {
@@ -42,7 +58,9 @@ struct SystemCLI {
         NativeOutput.printJSON(response)
     }
 
-    // 1. CPU Load
+    /// Reads the cumulative CPU tick counters from the Mach host.
+    ///
+    /// - Returns: The user, system, idle and nice tick counts, or `nil` if the kernel call fails.
     private static func getCPUTicks() -> (user: UInt32, system: UInt32, idle: UInt32, nice: UInt32)? {
         var load = host_cpu_load_info()
         var count = mach_msg_type_number_t(MemoryLayout<host_cpu_load_info_data_t>.size / MemoryLayout<integer_t>.size)
@@ -62,9 +80,12 @@ struct SystemCLI {
         return nil
     }
 
+    /// Measures CPU load over a short sampling interval.
+    ///
+    /// - Returns: The load as a percentage rounded to one decimal place, or `0` if sampling fails.
     private static func measureCPU() -> Double {
         guard let s1 = getCPUTicks() else { return 0.0 }
-        // Fast 80ms sampling interval to preserve responsiveness
+        // A short 80 ms interval keeps the widget responsive.
         Thread.sleep(forTimeInterval: 0.08)
         guard let s2 = getCPUTicks() else { return 0.0 }
 
@@ -81,7 +102,11 @@ struct SystemCLI {
         return 0.0
     }
 
-    // 2. Memory (RAM)
+    /// Measures memory usage from the Mach virtual memory statistics.
+    ///
+    /// Used memory is the sum of active, wired and compressed pages.
+    ///
+    /// - Returns: The used percentage, used gibibytes and total gibibytes.
     private static func measureMemory() -> (percent: Double, usedGB: Double, totalGB: Double) {
         var vmStats = vm_statistics64()
         var count = mach_msg_type_number_t(MemoryLayout<vm_statistics64_data_t>.size / MemoryLayout<integer_t>.size)
@@ -109,7 +134,9 @@ struct SystemCLI {
         return (0.0, 0.0, totalGB)
     }
 
-    // 3. Disk (Storage)
+    /// Measures usage of the startup volume.
+    ///
+    /// - Returns: The used percentage, used gibibytes and total gibibytes, or zeros on failure.
     private static func measureDisk() -> (percent: Double, usedGB: Double, totalGB: Double) {
         do {
             let attrs = try FileManager.default.attributesOfFileSystem(forPath: "/")
@@ -125,7 +152,10 @@ struct SystemCLI {
         return (0.0, 0.0, 0.0)
     }
 
-    // 4. Battery
+    /// Reads the state of the internal battery from IOKit power sources.
+    ///
+    /// - Returns: Whether a battery exists, its charge, and its charging and AC power state.
+    ///   Desktop Macs report no battery at 100% on AC power.
     private static func measureBattery() -> (hasBattery: Bool, percent: Int, isCharging: Bool, isPluggedIn: Bool) {
         guard let blob = IOPSCopyPowerSourcesInfo()?.takeRetainedValue(),
               let sources = IOPSCopyPowerSourcesList(blob)?.takeRetainedValue() as? [CFTypeRef],

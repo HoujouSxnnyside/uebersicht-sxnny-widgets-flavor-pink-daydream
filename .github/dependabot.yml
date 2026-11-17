@@ -1,21 +1,25 @@
 version: 2
 updates:
-  - package-ecosystem: "npm"
-    directory: "/"
+  - package-ecosystem: github-actions
+    directory: /
     schedule:
-      interval: "weekly"
-    groups:
-      dependencies:
-        patterns:
-          - "*"
-    open-pull-requests-limit: 5
-
-  - package-ecosystem: "github-actions"
-    directory: "/"
-    schedule:
-      interval: "weekly"
+      interval: weekly
     groups:
       actions:
-        patterns:
-          - "*"
-    open-pull-requests-limit: 5
+        patterns: ["*"]
+
+  - package-ecosystem: bun
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      dependencies:
+        patterns: ["*"]
+
+  - package-ecosystem: swift
+    directory: /native
+    schedule:
+      interval: weekly
+    groups:
+      dependencies:
+        patterns: ["*"]

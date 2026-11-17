@@ -1,11 +1,15 @@
 import type { FC, SVGProps } from 'react';
 
+/** Props for {@link TeddySticker}. Any other SVG attribute is forwarded to the root element. */
 interface TeddyStickerProps extends SVGProps<SVGSVGElement> {
+  /** Width and height in pixels. */
   size?: number;
 }
 
 /**
- * Coquette Teddy Bear SVG illustration for Teddy Corner widget
+ * Teddy bear illustration for the Teddy Corner widget.
+ *
+ * Decorative only: the SVG is hidden from assistive technology.
  */
 export const TeddySticker: FC<TeddyStickerProps> = ({ size = 72, className, style, ...props }) => {
   return (

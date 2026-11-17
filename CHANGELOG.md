@@ -9,8 +9,25 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+---
+
+## [0.2.0] — 2026-11-17
+
+### Changed
+
+- License changed from SPUL to PolyForm Noncommercial 1.0.0.
+- Community files, issue and PR templates, Dependabot configuration and badges updated.
+- CI and release workflows pin Bun to `1.4.4` (matches `packageManager`) instead of `latest`.
+- Files follow each language's style guide: `PascalCase.tsx` for React components, `kebab-case.ts` for TypeScript, `PascalCase.swift` for Swift. Tests moved to `tests/`, mirroring `src/`. Biome enforces the TypeScript rules.
+- Fonts are self-hosted: Nunito is bundled (SIL OFL 1.1) and the Google Fonts import and Quicksand fallback are removed.
+- TSDoc and Swift documentation comments added to the public API; Open-Meteo fields use `CodingKeys` with lowerCamelCase properties.
+- The release archive includes `LICENSE` and the font licenses under `licenses/`.
+- Bun `>= 1.4.0` is now declared in `engines` and the README (it was documented as `>= 1.1.0`).
+- Dependencies updated: `@biomejs/biome` 2.6.8, `@iconify-json/mingcute` 1.2.10, `@types/bun` 1.4.4.
+
 ### Added
 
+- `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, pull request and feature request templates, `FUNDING.yml`.
 - Interactive drag-and-drop support with local storage persistence across all widgets.
 - Double-click to reset widget position.
 - Real-time build watcher with file system debouncing in `scripts/build.ts`.
@@ -33,5 +50,6 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
-[Unreleased]: https://github.com/HoujouSxnnyside/uebersicht-sxnny-widgets-flavor-pink-daydream/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/HoujouSxnnyside/uebersicht-sxnny-widgets-flavor-pink-daydream/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/HoujouSxnnyside/uebersicht-sxnny-widgets-flavor-pink-daydream/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/HoujouSxnnyside/uebersicht-sxnny-widgets-flavor-pink-daydream/releases/tag/v0.1.0
